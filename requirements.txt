@@ -1,0 +1,6 @@
+flask
+scikit-learn==1.2.2
+numpy
+matplotlib.pyplot
+cv2
+keras

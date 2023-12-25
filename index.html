@@ -1,0 +1,43 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dataset Upload</title>
+</head>
+<body>
+
+<h2>Linear<span>Regression</span></h2>
+
+<!-- Display the result -->
+{% if result %}
+    <div> {{ result | safe }}</div>
+{% endif %}
+
+<div>
+    <!-- Boxplot -->
+    <div>
+        {{ boxplot_image | safe }}
+    </div>
+
+    <!-- Correlation Heatmap -->
+    <div>
+        {{ correlation_heatmap | safe }}
+    </div>
+</div>
+
+<form action="{{ url_for('process_data') }}" method="post" enctype="multipart/form-data">
+    
+    <label for="dataset">Choose a dataset file (CSV or Excel):</label>
+    <input type="file" id="dataset" name="dataset" accept=".csv, .xlsx, .xls" required>
+    <br>
+    <label for="target_variable">Enter the target variable:</label>
+    <input type="text" id="target_variable" name="target_variable" required>
+    <br>
+    <input type="submit" value="Upload and Process">
+</form>
+
+</body>
+</html>
